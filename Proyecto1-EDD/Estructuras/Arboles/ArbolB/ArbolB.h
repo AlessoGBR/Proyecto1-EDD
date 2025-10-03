@@ -16,15 +16,9 @@ private:
     void limpiarRec(NodoB *nodo);
 
 public:
-    ArbolB(int gradoMinimo = 3) {
-        raiz = nullptr;
-        grado = gradoMinimo;
-        tamaño = 0;
-    }
+    ArbolB(int gradoMinimo = 3);
 
-    ~ArbolB() {
-        limpiar();
-    }
+    ~ArbolB();
 
     void insertar(Libro *libro);
 
@@ -40,13 +34,13 @@ public:
 
     void mostrarLibrosOrdenados();
 
-    void mostrarEstructura();
-
     void mostrarEstadisticas();
 
     void limpiar();
 
     ListaEnlazada *obtenerAñosUnicos();
+
+    NodoB *obtenerRaiz();
 
 private:
     void obtenerAñosRec(NodoB *nodo, ListaEnlazada *años);

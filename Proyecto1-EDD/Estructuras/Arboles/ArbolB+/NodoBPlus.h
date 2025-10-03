@@ -75,8 +75,6 @@ public:
 
     NodoBPlus *obtenerPrimeraHoja();
 
-    void mostrarEstructura(const string &prefijo, bool esUltimo, int nivel);
-
     void recorrerHojas();
 };
 

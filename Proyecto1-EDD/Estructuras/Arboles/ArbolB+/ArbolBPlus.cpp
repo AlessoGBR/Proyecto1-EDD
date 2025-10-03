@@ -4,6 +4,17 @@
 
 #include "ArbolBPlus.h"
 
+ArbolBPlus::ArbolBPlus(int gradoMinimo) {
+    raiz = nullptr;
+    grado = gradoMinimo;
+    tamaño = 0;
+    primeraHoja = nullptr;
+}
+
+ArbolBPlus::~ArbolBPlus() {
+    limpiar();
+}
+
 void ArbolBPlus::limpiarRec(NodoBPlus *nodo) {
     if (nodo != nullptr) {
         if (!nodo->esHoja) {
@@ -98,36 +109,27 @@ int ArbolBPlus::obtenerGrado() const {
 
 void ArbolBPlus::mostrarLibrosPorGenero() {
     if (primeraHoja == nullptr) {
+        cout << "--------------------------------------------------\n";
         cout << "NO HAY LIBROS EN EL ARBOL.\n";
         return;
     }
-
-    cout << "\n=== LIBROS ORGANIZADOS POR GENERO ===\n";
+    cout << "--------------------------------------------------\n";
+    cout << "LIBROS ORGANIZADOS POR GENERO:\n";
     NodoBPlus *actual = primeraHoja;
     while (actual != nullptr) {
         actual->recorrerHojas();
         actual = actual->siguiente;
     }
-    cout << "====================================\n";
-}
-
-void ArbolBPlus::mostrarEstructura() {
-    if (raiz == nullptr) {
-        cout << "EL ARBOL B+ ESTA VACIO.\n";
-        return;
-    }
-
-    cout << "\n=== ESTRUCTURA DEL ARBOL B+ (GRADO: " << grado << ") ===\n";
-    raiz->mostrarEstructura("", true, 0);
-    cout << "==============================================\n";
+    cout << "--------------------------------------------------\n";
 }
 
 void ArbolBPlus::mostrarEstadisticas() {
-    cout << "\n=== ESTADISTICAS DEL ARBOL B+ ===\n";
+    cout << "--------------------------------------------------\n";
+    cout << "ESTADISTICAS DEL ARBOL B+:\n";
     cout << "NUMERO TOTAL DE LIBROS: " << tamaño << "\n";
     cout << "GRADO MINIMO: " << grado << "\n";
     cout << "¿ESTA VACIO?: " << (estaVacio() ? "SI" : "NO") << "\n";
-    cout << "===============================\n";
+    cout << "--------------------------------------------------\n";
 }
 
 void ArbolBPlus::limpiar() {
@@ -139,11 +141,12 @@ void ArbolBPlus::limpiar() {
 
 void ArbolBPlus::mostrarEstadisticasPorGenero() {
     if (primeraHoja == nullptr) {
+        cout << "--------------------------------------------------\n";
         cout << "NO HAY GENEROS DISPONIBLES.\n";
         return;
     }
-
-    cout << "\n=== ESTADISTICAS POR GENERO ===\n";
+    cout << "--------------------------------------------------\n";
+    cout << "ESTADISTICAS POR GENERO:\n";
     NodoBPlus *actual = primeraHoja;
     int totalGeneros = 0;
 
@@ -157,11 +160,12 @@ void ArbolBPlus::mostrarEstadisticasPorGenero() {
     }
 
     cout << "TOTAL DE GENEROS DIFERENTES: " << totalGeneros << "\n";
-    cout << "===============================\n";
+    cout << "--------------------------------------------------\n";
 }
 
 void ArbolBPlus::recorridoSecuencial() {
-    cout << "\n=== RECORRIDO SECUENCIAL DE GENEROS ===\n";
+    cout << "--------------------------------------------------\n";
+    cout << "RECORRIDO SECUENCIAL DE GENEROS:\n";
     if (primeraHoja == nullptr) {
         cout << "ARBOL VACIO\n";
         return;
@@ -178,5 +182,5 @@ void ArbolBPlus::recorridoSecuencial() {
         }
         actual = actual->siguiente;
     }
-    cout << "======================================\n";
+    cout << "--------------------------------------------------\n";
 }

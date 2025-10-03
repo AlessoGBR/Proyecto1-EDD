@@ -25,4 +25,9 @@ add_executable(Proyecto1_EDD main.cpp
         Estructuras/Arboles/ArbolB+/NodoBPlus.cpp
         Estructuras/Arboles/ArbolB+/NodoBPlus.h
         Estructuras/Arboles/ArbolB+/ArbolBPlus.cpp
-        Estructuras/Arboles/ArbolB+/ArbolBPlus.h)
+        Estructuras/Arboles/ArbolB+/ArbolBPlus.h
+        Utilidades/ManejoBiblioteca.cpp
+        Utilidades/ManejoBiblioteca.h
+        Utilidades/GeneradorGraficas.cpp
+        Utilidades/GeneradorGraficas.h
+)

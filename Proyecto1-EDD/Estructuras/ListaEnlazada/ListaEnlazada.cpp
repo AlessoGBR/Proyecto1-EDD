@@ -5,6 +5,13 @@
 
 #include "ListaEnlazada.h"
 
+ListaEnlazada::ListaEnlazada() : cabeza(nullptr), tamaño(0) {
+}
+
+ListaEnlazada::~ListaEnlazada() {
+    limpiar();
+}
+
 void ListaEnlazada::insertar(Libro *libro) {
     if (libro == nullptr) return;
 
@@ -118,14 +125,15 @@ int ListaEnlazada::obtenerTamaño() const {
 
 void ListaEnlazada::mostrarLibros() const {
     if (cabeza == nullptr) {
+        cout << "--------------------------------------------------\n";
         cout << "NO HAY LIBROS EN LA LISTA.\n";
         return;
     }
 
     NodoLista *actual = cabeza;
     int contador = 1;
-
-    cout << "\n=== LISTA DE LIBROS ===\n";
+    cout << "--------------------------------------------------\n";
+    cout << "LISTA DE LIBROS:\n";
     while (actual != nullptr) {
         cout << contador << ". ";
         cout << "TITULO: " << actual->libro->getTitulo() << " | ";
@@ -137,7 +145,7 @@ void ListaEnlazada::mostrarLibros() const {
         actual = actual->siguiente;
         contador++;
     }
-    cout << "========================\n";
+    cout << "--------------------------------------------------\n";
 }
 
 void ListaEnlazada::limpiar() {

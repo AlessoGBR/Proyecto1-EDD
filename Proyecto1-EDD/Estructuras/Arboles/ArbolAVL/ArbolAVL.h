@@ -34,6 +34,7 @@ private:
 
     NodoAVL *obtenerMinimo(NodoAVL *nodo);
 
+    // FUNCION RECURSIVA PAR ELIMINAR
     NodoAVL *eliminarRec(NodoAVL *raiz, const string &titulo);
 
     NodoAVL *buscarRec(NodoAVL *nodo, const string &titulo);
@@ -47,12 +48,9 @@ private:
     void convertirAArrayRec(NodoAVL *nodo, Libro **array, int &index);
 
 public:
-    ArbolAVL() : raiz(nullptr), tamaño(0) {
-    }
+    ArbolAVL();
 
-    ~ArbolAVL() {
-        limpiar();
-    }
+    ~ArbolAVL();
 
     void insertar(Libro *libro);
 
@@ -68,8 +66,6 @@ public:
 
     int obtenerAltura();
 
-    void mostrarArbol();
-
     void mostrarLibrosOrdenados();
 
     void limpiar();
@@ -79,6 +75,10 @@ public:
     Libro *busquedaBinariaEnArray(Libro **array, int tamaño, const string &titulo);
 
     void mostrarEstadisticas();
+
+    NodoAVL *obtenerRaiz() const {
+        return raiz;
+    }
 };
 
 #endif //PROYECTO1_EDD_ARBOLAVL_H

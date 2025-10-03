@@ -23,13 +23,10 @@ public:
         esHoja = hoja;
         numClaves = 0;
 
-        // Alocar memoria para claves, libros e hijos
-        // Alocar memoria para claves, libros e hijos
         claves = new int[2 * grado - 1];
         libros = new Libro *[2 * grado - 1];
         hijos = new NodoB *[2 * grado];
 
-        // Inicializar arrays
         for (int i = 0; i < 2 * grado - 1; i++) {
             claves[i] = 0;
             libros[i] = nullptr;
@@ -45,26 +42,18 @@ public:
         delete[] hijos;
     }
 
-    // Buscar una clave en este nodo
     int buscarClave(int clave);
 
-    // Insertar una clave y libro cuando el nodo no está lleno
     void insertarNoLleno(int clave, Libro *libro);
 
-    // Dividir un hijo lleno
     void dividirHijo(int indice, NodoB *hijo);
 
-    // Recorrido del nodo para mostrar todas las claves
     void recorrer();
 
-    // Buscar una clave específica en el subárbol
     Libro *buscar(int clave);
 
-    // Buscar todos los libros en un rango de años
     void buscarRango(int anioInicio, int anioFin, ListaEnlazada *resultados);
 
-    // Mostrar estructura del nodo
-    void mostrarEstructura(const string &prefijo, bool esUltimo, int nivel);
 };
 
 

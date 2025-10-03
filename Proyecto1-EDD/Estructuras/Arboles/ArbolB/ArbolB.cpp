@@ -4,6 +4,16 @@
 
 #include "ArbolB.h"
 
+ArbolB::ArbolB(int gradoMinimo) {
+    raiz = nullptr;
+    grado = gradoMinimo;
+    tamaño = 0;
+}
+
+ArbolB::~ArbolB() {
+    limpiar();
+}
+
 void ArbolB::limpiarRec(NodoB *nodo) {
     if (nodo != nullptr) {
         if (!nodo->esHoja) {
@@ -76,32 +86,24 @@ int ArbolB::obtenerGrado() const {
 
 void ArbolB::mostrarLibrosOrdenados() {
     if (raiz == nullptr) {
+        cout << "--------------------------------------------------\n";
         cout << "NO HAY LIBROS EN EL ARBOL.\n";
         return;
     }
 
-    cout << "\n=== LIBROS ORDENADOS POR AÑO ===\n";
+    cout << "--------------------------------------------------\n";
+    cout << "LIBROS ORDENADOS POR AÑO:\n";
     raiz->recorrer();
-    cout << "===============================\n";
-}
-
-void ArbolB::mostrarEstructura() {
-    if (raiz == nullptr) {
-        cout << "EL ARBOL B ESTA VACIO.\n";
-        return;
-    }
-
-    cout << "\n=== ESTRUCTURA DEL ÁRBOL B (GRADO: " << grado << ") ===\n";
-    raiz->mostrarEstructura("", true, 0);
-    cout << "===============================================\n";
+    cout << "--------------------------------------------------\n";
 }
 
 void ArbolB::mostrarEstadisticas() {
-    cout << "\n=== ESTADÍSTICAS DEL ÁRBOL B ===\n";
+    cout << "--------------------------------------------------\n";
+    cout << "ESTADÍSTICAS DEL ÁRBOL B:\n";
     cout << "NUMERO TOTAL DE LIBROS: " << tamaño << "\n";
     cout << "GRADOM INIMO: " << grado << "\n";
     cout << "¿ESTA VACIO?: " << (estaVacio() ? "SI" : "NO") << "\n";
-    cout << "===============================\n";
+    cout << "--------------------------------------------------\n";
 }
 
 void ArbolB::limpiar() {
@@ -133,4 +135,8 @@ void ArbolB::obtenerAñosRec(NodoB *nodo, ListaEnlazada *años) {
             obtenerAñosRec(nodo->hijos[i], años);
         }
     }
+}
+
+NodoB *ArbolB::obtenerRaiz() {
+    return raiz;
 }

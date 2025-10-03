@@ -4,6 +4,13 @@
 
 #include "../ArbolAVL/ArbolAVL.h"
 
+ArbolAVL::ArbolAVL() : raiz(nullptr), tamaño(0) {
+}
+
+ArbolAVL::~ArbolAVL() {
+    limpiar();
+}
+
 int ArbolAVL::obtenerAlturaNodo(NodoAVL *nodo) {
     if (nodo == nullptr) return 0;
     return nodo->altura;
@@ -180,21 +187,6 @@ void ArbolAVL::inOrderRec(NodoAVL *nodo, ListaEnlazada *lista) {
     }
 }
 
-void ArbolAVL::mostrarArbolRec(NodoAVL *nodo, const string &prefijo, bool esUltimo) {
-    if (nodo != nullptr) {
-        cout << prefijo;
-        cout << (esUltimo ? "└── " : "├── ");
-        cout << nodo->libro->getTitulo() << " (h:" << nodo->altura << ")" << endl;
-
-        string nuevoPrefijo = prefijo + (esUltimo ? "    " : "│   ");
-
-        if (nodo->izquierdo != nullptr || nodo->derecho != nullptr) {
-            mostrarArbolRec(nodo->derecho, nuevoPrefijo, nodo->izquierdo == nullptr);
-            mostrarArbolRec(nodo->izquierdo, nuevoPrefijo, true);
-        }
-    }
-}
-
 void ArbolAVL::limpiarRec(NodoAVL *nodo) {
     if (nodo != nullptr) {
         limpiarRec(nodo->izquierdo);
@@ -246,20 +238,10 @@ int ArbolAVL::obtenerAltura() {
     return obtenerAlturaNodo(raiz);
 }
 
-void ArbolAVL::mostrarArbol() {
-    if (raiz == nullptr) {
-        cout << "EL ARBOL AVL ESTA VACIO.\n";
-        return;
-    }
-
-    cout << "\n=== ESTRUCTURA DEL ÁRBOL AVL ===\n";
-    mostrarArbolRec(raiz, "", true);
-    cout << "================================\n";
-}
-
 void ArbolAVL::mostrarLibrosOrdenados() {
     ListaEnlazada *librosOrdenados = obtenerLibrosOrdenados();
-    cout << "\n=== LIBROS ORDENADOS ALFABÉTICAMENTE ===\n";
+    cout << "--------------------------------------------------\n";
+    cout << "LIBROS ORDENADOS ALFABETICAMENTE:\n";
     librosOrdenados->mostrarLibros();
     delete librosOrdenados;
 }
@@ -301,9 +283,10 @@ Libro *ArbolAVL::busquedaBinariaEnArray(Libro **array, int tamaño, const string
 }
 
 void ArbolAVL::mostrarEstadisticas() {
-    cout << "\n=== ESTADÍSTICAS DEL ÁRBOL AVL ===\n";
+    cout << "--------------------------------------------------\n";
+    cout << "ESTADISTICAS DEL ARBOL AVL:\n";
     cout << "NUMERO TOTAL DE LIBROS: " << tamaño << "\n";
     cout << "ALTURA DEL ARBOL: " << obtenerAltura() << "\n";
     cout << "¿ESTA VACIO?: " << (estaVacio() ? "SI" : "NO") << "\n";
-    cout << "==================================\n";
+    cout << "--------------------------------------------------\n";
 }

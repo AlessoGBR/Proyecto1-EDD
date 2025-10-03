@@ -17,12 +17,9 @@ private:
     int tamaño;
 
 public:
-    ListaEnlazada() : cabeza(nullptr), tamaño(0) {
-    }
+    ListaEnlazada();
 
-    ~ListaEnlazada() {
-        limpiar();
-    }
+    ~ListaEnlazada();
 
     void insertar(Libro *libro);
 

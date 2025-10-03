@@ -127,23 +127,3 @@ void NodoB::buscarRango(int anioInicio, int anioFin, ListaEnlazada *resultados) 
     }
 }
 
-void NodoB::mostrarEstructura(const string &prefijo, bool esUltimo, int nivel) {
-    cout << prefijo;
-    cout << (esUltimo ? "└── " : "├── ");
-    cout << "NIVEL " << nivel << " [";
-
-    for (int i = 0; i < numClaves; i++) {
-        cout << claves[i];
-        if (i < numClaves - 1) cout << ", ";
-    }
-    cout << "] " << (esHoja ? "(HOJA)" : "(INTERNO)") << "\n";
-
-    if (!esHoja) {
-        string nuevoPrefijo = prefijo + (esUltimo ? "    " : "│   ");
-        for (int i = 0; i < numClaves + 1; i++) {
-            if (hijos[i] != nullptr) {
-                hijos[i]->mostrarEstructura(nuevoPrefijo, i == numClaves, nivel + 1);
-            }
-        }
-    }
-}

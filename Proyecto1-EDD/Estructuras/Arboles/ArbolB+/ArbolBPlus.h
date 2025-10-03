@@ -17,16 +17,9 @@ private:
     void limpiarRec(NodoBPlus *nodo);
 
 public:
-    ArbolBPlus(int gradoMinimo = 3) {
-        raiz = nullptr;
-        grado = gradoMinimo;
-        tamaño = 0;
-        primeraHoja = nullptr;
-    }
+    ArbolBPlus(int gradoMinimo = 3);
 
-    ~ArbolBPlus() {
-        limpiar();
-    }
+    ~ArbolBPlus();
 
     void insertar(Libro *libro);
 
@@ -42,8 +35,6 @@ public:
 
     void mostrarLibrosPorGenero();
 
-    void mostrarEstructura();
-
     void mostrarEstadisticas();
 
     void mostrarEstadisticasPorGenero();
@@ -51,6 +42,10 @@ public:
     void limpiar();
 
     void recorridoSecuencial();
+
+    NodoBPlus *obtenerRaiz() const {
+        return raiz;
+    }
 };
 
 

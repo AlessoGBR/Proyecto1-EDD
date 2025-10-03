@@ -107,36 +107,6 @@ NodoBPlus *NodoBPlus::obtenerPrimeraHoja() {
     }
 }
 
-void NodoBPlus::mostrarEstructura(const string &prefijo, bool esUltimo, int nivel) {
-    cout << prefijo;
-    cout << (esUltimo ? "└── " : "├── ");
-    cout << "NIVEL " << nivel << " [";
-
-    for (int i = 0; i < numClaves; i++) {
-        cout << claves[i];
-        if (i < numClaves - 1) cout << ", ";
-    }
-    cout << "] " << (esHoja ? "(HOJA)" : "(INTERNO)");
-
-    if (esHoja) {
-        cout << " -> ";
-        for (int i = 0; i < numClaves; i++) {
-            cout << listas[i]->obtenerTamaño() << " LIBROS";
-            if (i < numClaves - 1) cout << ", ";
-        }
-    }
-    cout << "\n";
-
-    if (!esHoja) {
-        string nuevoPrefijo = prefijo + (esUltimo ? "    " : "│   ");
-        for (int i = 0; i < numClaves + 1; i++) {
-            if (hijos[i] != nullptr) {
-                hijos[i]->mostrarEstructura(nuevoPrefijo, i == numClaves, nivel + 1);
-            }
-        }
-    }
-}
-
 void NodoBPlus::recorrerHojas() {
     if (esHoja) {
         for (int i = 0; i < numClaves; i++) {
