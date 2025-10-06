@@ -96,7 +96,7 @@ bool Biblioteca::eliminarLibro(const string &isbn) {
     bool resultado = true;
     resultado &= listaBusquedaSecuencial->eliminar(isbn);
     resultado &= arbolTitulos->eliminar(titulo);
-    // Nota: ArbolB y ArbolB+ requieren implementación de eliminación
+    // ELIMINACION EN ARBOLES B FALTANTE
 
     if (resultado) {
         cout << "LIBRO ELIMINADO EXITOSAMENTE\n";
